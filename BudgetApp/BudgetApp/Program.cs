@@ -11,5 +11,6 @@ namespace BudgetApp
         static void Main(string[] args)
         {
         }
+        
     }
 }
