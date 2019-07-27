@@ -19,6 +19,57 @@ namespace TestBudget
         }
 
         [TestMethod]
+        public void end_without_budget()
+        {
+            GivenBudgets(
+                new Budget {YearMonth = "201902", Amount = 28000}
+            );
+            decimal actual = _budgetService.Query(new DateTime(2019, 1, 1), new DateTime(2019, 3, 5));
+            Assert.AreEqual(28000, actual);
+        }
+
+        [TestMethod]
+        public void middle_without_budget()
+        {
+            GivenBudgets(
+                new Budget {YearMonth = "201901", Amount = 31000},
+                new Budget {YearMonth = "201903", Amount = 31000}
+            );
+            decimal actual = _budgetService.Query(new DateTime(2019, 1, 1), new DateTime(2019, 3, 5));
+            Assert.AreEqual(36000, actual);
+        }
+
+        [TestMethod]
+        public void period_without_overlapping_after_budget()
+        {
+            GivenBudgets(
+                new Budget {YearMonth = "201903", Amount = 31000}
+            );
+            decimal actual = _budgetService.Query(new DateTime(2019, 4, 2), new DateTime(2019, 4, 5));
+            Assert.AreEqual(0, actual);
+        }
+
+        [TestMethod]
+        public void period_without_overlapping_before_budget()
+        {
+            GivenBudgets(
+                new Budget {YearMonth = "201903", Amount = 31000}
+            );
+            decimal actual = _budgetService.Query(new DateTime(2019, 1, 1), new DateTime(2019, 2, 5));
+            Assert.AreEqual(0, actual);
+        }
+
+        [TestMethod]
+        public void start_without_budget()
+        {
+            GivenBudgets(
+                new Budget {YearMonth = "201902", Amount = 28000}
+            );
+            decimal actual = _budgetService.Query(new DateTime(2019, 1, 1), new DateTime(2019, 2, 28));
+            Assert.AreEqual(28000, actual);
+        }
+
+        [TestMethod]
         public void Test_BudgetZero()
         {
             GivenBudgets(new Budget {YearMonth = "201907", Amount = 0});
@@ -86,6 +137,7 @@ namespace TestBudget
             Assert.AreEqual(1000, actual);
         }
 
+        //fix bug
         [TestMethod]
         public void Test_SingleWholeMonth()
         {
