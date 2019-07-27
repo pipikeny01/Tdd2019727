@@ -81,6 +81,18 @@ namespace TestBudget
             Assert.AreEqual( 11000, actual);
         }
 
+        [TestMethod]
+        public void Test_CrossThreeMonth()
+        {
+            List<Budget> mockBudgets=new List<Budget>();
+            mockBudgets.Add(new Budget {YearMonth = "201901", Amount = 31000});
+            mockBudgets.Add(new Budget {YearMonth = "201902", Amount = 28000});
+            mockBudgets.Add(new Budget { YearMonth = "201903", Amount = 31000 });
+            _budgetRepository.GetAll().Returns(mockBudgets);
+            decimal actual = _budgetService.Query(new DateTime(2019, 1, 31), new DateTime(2019, 3, 10));
+            Assert.AreEqual( 39000, actual);
+        }
+
         
 
     }
