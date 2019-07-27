@@ -1,0 +1,11 @@
+D:\Budget\BudgetApp\BudgetApp\bin\Debug\BudgetApp.exe.config
+D:\Budget\BudgetApp\BudgetApp\bin\Debug\BudgetApp.exe
+D:\Budget\BudgetApp\BudgetApp\bin\Debug\BudgetApp.pdb
+D:\Budget\BudgetApp\BudgetApp\bin\Debug\NSubstitute.dll
+D:\Budget\BudgetApp\BudgetApp\bin\Debug\NSubstituteAutoMocker.dll
+D:\Budget\BudgetApp\BudgetApp\bin\Debug\NSubstitute.xml
+D:\Budget\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csprojAssemblyReference.cache
+D:\Budget\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csproj.CoreCompileInputs.cache
+D:\Budget\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csproj.CopyComplete
+D:\Budget\BudgetApp\BudgetApp\obj\Debug\BudgetApp.exe
+D:\Budget\BudgetApp\BudgetApp\obj\Debug\BudgetApp.pdb
