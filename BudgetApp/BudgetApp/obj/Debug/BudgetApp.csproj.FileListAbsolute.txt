@@ -9,3 +9,14 @@ D:\Budget\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csproj.CoreCompileInputs.cache
 D:\Budget\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csproj.CopyComplete
 D:\Budget\BudgetApp\BudgetApp\obj\Debug\BudgetApp.exe
 D:\Budget\BudgetApp\BudgetApp\obj\Debug\BudgetApp.pdb
+C:\Users\joeychen\Source\Repos\weihaochiou\BudgetApp\BudgetApp\bin\Debug\BudgetApp.exe.config
+C:\Users\joeychen\Source\Repos\weihaochiou\BudgetApp\BudgetApp\bin\Debug\BudgetApp.exe
+C:\Users\joeychen\Source\Repos\weihaochiou\BudgetApp\BudgetApp\bin\Debug\BudgetApp.pdb
+C:\Users\joeychen\Source\Repos\weihaochiou\BudgetApp\BudgetApp\bin\Debug\NSubstitute.dll
+C:\Users\joeychen\Source\Repos\weihaochiou\BudgetApp\BudgetApp\bin\Debug\NSubstituteAutoMocker.dll
+C:\Users\joeychen\Source\Repos\weihaochiou\BudgetApp\BudgetApp\bin\Debug\NSubstitute.xml
+C:\Users\joeychen\Source\Repos\weihaochiou\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csprojAssemblyReference.cache
+C:\Users\joeychen\Source\Repos\weihaochiou\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csproj.CoreCompileInputs.cache
+C:\Users\joeychen\Source\Repos\weihaochiou\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csproj.CopyComplete
+C:\Users\joeychen\Source\Repos\weihaochiou\BudgetApp\BudgetApp\obj\Debug\BudgetApp.exe
+C:\Users\joeychen\Source\Repos\weihaochiou\BudgetApp\BudgetApp\obj\Debug\BudgetApp.pdb
