@@ -5940,23 +5940,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\weiha\\.nuget\\packages\\": {},
+    "C:\\Users\\kenny\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Budget\\BudgetApp\\TestBudget\\TestBudget.csproj",
+      "projectUniqueName": "D:\\Users\\kenny\\Source\\Repos\\201907tdd\\tdd20190727\\BudgetApp\\TestBudget\\TestBudget.csproj",
       "projectName": "TestBudget",
-      "projectPath": "D:\\Budget\\BudgetApp\\TestBudget\\TestBudget.csproj",
-      "packagesPath": "C:\\Users\\weiha\\.nuget\\packages\\",
-      "outputPath": "D:\\Budget\\BudgetApp\\TestBudget\\obj\\",
+      "projectPath": "D:\\Users\\kenny\\Source\\Repos\\201907tdd\\tdd20190727\\BudgetApp\\TestBudget\\TestBudget.csproj",
+      "packagesPath": "C:\\Users\\kenny\\.nuget\\packages\\",
+      "outputPath": "D:\\Users\\kenny\\Source\\Repos\\201907tdd\\tdd20190727\\BudgetApp\\TestBudget\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\weiha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\kenny\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5969,8 +5969,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "D:\\Budget\\BudgetApp\\BudgetApp\\BudgetApp.csproj": {
-              "projectPath": "D:\\Budget\\BudgetApp\\BudgetApp\\BudgetApp.csproj"
+            "D:\\Users\\kenny\\Source\\Repos\\201907tdd\\tdd20190727\\BudgetApp\\BudgetApp\\BudgetApp.csproj": {
+              "projectPath": "D:\\Users\\kenny\\Source\\Repos\\201907tdd\\tdd20190727\\BudgetApp\\BudgetApp\\BudgetApp.csproj"
             }
           }
         }
