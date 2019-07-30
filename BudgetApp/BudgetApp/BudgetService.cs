@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace BudgetApp
@@ -15,36 +16,15 @@ namespace BudgetApp
         public decimal Query(DateTime startDate, DateTime endDate)
         {
             var budgets = this._repo.GetAll();
-            string searchMonth = "";
             if (startDate > endDate)
             {
                 return 0;
             }
 
             //同年月
-            if (startDate.Year == endDate.Year && startDate.Month == endDate.Month)
+            if (startDate.ToString("yyyyMM") == endDate.ToString("yyyyMM"))
             {
-                searchMonth = startDate.ToString("yyyyMM");
-                if (budgets.All(x => x.YearMonth != searchMonth))
-                {
-                    return 0;
-                }
-
-                //一整個月
-                if (endDate.Day == DateTime.DaysInMonth(startDate.Year, startDate.Month) && startDate.Day == 1)
-                {
-                    return budgets.FirstOrDefault(x => x.YearMonth == searchMonth).Amount;
-                }
-                else if (startDate.Day == endDate.Day) //同一天
-                {
-                    return budgets.FirstOrDefault(x => x.YearMonth == searchMonth).Amount /
-                        DateTime.DaysInMonth(startDate.Year, startDate.Month);
-                }
-                else
-                {
-                    return budgets.FirstOrDefault(x => x.YearMonth == searchMonth).Amount /
-                        DateTime.DaysInMonth(startDate.Year, startDate.Month) * (endDate.Day - startDate.Day + 1);
-                }
+                return QeurySingleMonth(startDate, endDate, budgets);
             }
             else
             {
@@ -73,6 +53,8 @@ namespace BudgetApp
                 var allEndMonth = new DateTime(endDate.Year, endDate.Month, 1);
                 while (allEndMonth > allStartMonth)
                 {
+                    string searchMonth = "";
+
                     searchMonth = allStartMonth.ToString("yyyyMM");
                     if (budgets.Any(x => x.YearMonth == searchMonth))
                         totalAmount += budgets.FirstOrDefault(x => x.YearMonth == searchMonth).Amount;
@@ -81,6 +63,33 @@ namespace BudgetApp
                 }
 
                 return totalAmount;
+            }
+        }
+
+        private static decimal QeurySingleMonth(DateTime startDate, DateTime endDate, List<Budget> budgets)
+        {
+            string searchMonth = startDate.ToString("yyyyMM");
+
+            if (budgets.All(x => x.YearMonth != searchMonth))
+            {
+                return 0;
+            }
+
+            //一整個月
+            var budget = budgets.FirstOrDefault(x => x.YearMonth == searchMonth);
+            if (endDate.Day == DateTime.DaysInMonth(startDate.Year, startDate.Month) && startDate.Day == 1)
+            {
+                return budget.Amount;
+            }
+            else if (startDate.Day == endDate.Day) //同一天
+            {
+                return budget.Amount /
+                       DateTime.DaysInMonth(startDate.Year, startDate.Month);
+            }
+            else
+            {
+                return budget.Amount /
+                       DateTime.DaysInMonth(startDate.Year, startDate.Month) * (endDate.Day - startDate.Day + 1);
             }
         }
     }
