@@ -4,6 +4,7 @@ using System.Linq;
 
 namespace BudgetApp
 {
+    //https://github.com/201907tdd/tdd20190727
     public class BudgetService
     {
         private readonly IBudgetRepository _repo;
@@ -22,31 +23,36 @@ namespace BudgetApp
             }
 
             //同年月
-            if (startDate.ToString("yyyyMM") == endDate.ToString("yyyyMM"))
+            if (IsSameMonth(startDate, endDate))
             {
-                return QuerySingleMonth(startDate, endDate, budgets);
+                var budget = budgets.FirstOrDefault(x => x.YearMonth == startDate.ToString("yyyyMM"));
+
+                if (budget == null) return 0;
+
+                return budget.DailyAmount() * EffectiveDayCount(startDate, endDate);
             }
             else
             {
                 var startBudget = budgets.FirstOrDefault(x => x.YearMonth == startDate.ToString("yyyyMM"));
-                int firstMonth = 0;
+                var totalAmount = 0m;
+                int firstMonthAmount = 0;
                 if (startBudget != null)
                 {
-                    firstMonth = startBudget.Amount /
-                                 DateTime.DaysInMonth(startDate.Year, startDate.Month) *
-                                 (DateTime.DaysInMonth(startDate.Year, startDate.Month) - startDate.Day + 1);
+                    firstMonthAmount = startBudget.DailyAmount() *
+                                 EffectiveDayCount(startDate, startBudget.LastDay);
+                    //(startBudget.Days() - startDate.Day + 1);
                 }
 
+                totalAmount += firstMonthAmount;
                 var endBudget = budgets.FirstOrDefault(x => x.YearMonth == endDate.ToString("yyyyMM"));
 
-                int endMonth = 0;
+                int endMonthAmount = 0;
                 if (endBudget != null)
                 {
-                    endMonth = endBudget.Amount /
-                                  DateTime.DaysInMonth(endDate.Year, endDate.Month) * (endDate.Day);
+                    endMonthAmount = endBudget.DailyAmount() * EffectiveDayCount(endBudget.FirstDay, endDate);
                 }
 
-                var totalAmount = firstMonth + endMonth;
+                totalAmount += endMonthAmount;
 
                 //中間
                 var allStartMonth = new DateTime(startDate.Year, startDate.Month, 1).AddMonths(1);
@@ -66,20 +72,23 @@ namespace BudgetApp
             }
         }
 
+        private static int EffectiveDayCount(DateTime startDate, DateTime budgetLastDay)
+        {
+            return ((budgetLastDay - startDate).Days + 1);
+        }
+
+        private static bool IsSameMonth(DateTime startDate, DateTime endDate)
+        {
+            return startDate.ToString("yyyyMM") == endDate.ToString("yyyyMM");
+        }
+
         private static decimal QuerySingleMonth(DateTime startDate, DateTime endDate, List<Budget> budgets)
         {
-            string searchMonth = startDate.ToString("yyyyMM");
+            var budget = budgets.FirstOrDefault(x => x.YearMonth == startDate.ToString("yyyyMM"));
 
-            if (budgets.All(x => x.YearMonth != searchMonth))
-            {
-                return 0;
-            }
+            if (budget == null) return 0;
 
-            var budget = budgets.FirstOrDefault(x => x.YearMonth == searchMonth);
-
-            return budget.Amount /
-                   DateTime.DaysInMonth(startDate.Year, startDate.Month) * (endDate.Day - startDate.Day + 1);
-
+            return budget.DailyAmount() * (endDate.Day - startDate.Day + 1);
         }
     }
 }
