@@ -21,6 +21,7 @@ namespace BudgetApp
                 return 0;
             }
 
+            //同年月
             if (startDate.Year == endDate.Year && startDate.Month == endDate.Month)
             {
                 searchMonth = startDate.ToString("yyyyMM");
@@ -29,11 +30,12 @@ namespace BudgetApp
                     return 0;
                 }
 
+                //一整個月
                 if (endDate.Day == DateTime.DaysInMonth(startDate.Year, startDate.Month) && startDate.Day == 1)
                 {
                     return budgets.FirstOrDefault(x => x.YearMonth == searchMonth).Amount;
                 }
-                else if (startDate.Day == endDate.Day)
+                else if (startDate.Day == endDate.Day) //同一天
                 {
                     return budgets.FirstOrDefault(x => x.YearMonth == searchMonth).Amount /
                         DateTime.DaysInMonth(startDate.Year, startDate.Month);
@@ -47,36 +49,38 @@ namespace BudgetApp
             else
             {
                 var startBudget = budgets.FirstOrDefault(x => x.YearMonth == startDate.ToString("yyyyMM"));
-                int firstmonth = 0;
+                int firstMonth = 0;
                 if (startBudget != null)
                 {
-                    firstmonth = startBudget.Amount /
+                    firstMonth = startBudget.Amount /
                                  DateTime.DaysInMonth(startDate.Year, startDate.Month) *
                                  (DateTime.DaysInMonth(startDate.Year, startDate.Month) - startDate.Day + 1);
                 }
 
                 var endBudget = budgets.FirstOrDefault(x => x.YearMonth == endDate.ToString("yyyyMM"));
 
-                int secondmonth = 0;
+                int endMonth = 0;
                 if (endBudget != null)
                 {
-                    secondmonth = endBudget.Amount /
+                    endMonth = endBudget.Amount /
                                   DateTime.DaysInMonth(endDate.Year, endDate.Month) * (endDate.Day);
                 }
 
-                var totalAmount = firstmonth + secondmonth;
-                    var allStartMonth = new DateTime(startDate.Year, startDate.Month, 1).AddMonths(1);
-                    var allEndMonth = new DateTime(endDate.Year, endDate.Month, 1);
-                    while (allEndMonth > allStartMonth)
-                    {
-                        searchMonth = allStartMonth.ToString("yyyyMM");
-                        if (budgets.Any(x => x.YearMonth == searchMonth))
-                            totalAmount += budgets.FirstOrDefault(x => x.YearMonth == searchMonth).Amount;
+                var totalAmount = firstMonth + endMonth;
 
-                        allStartMonth = allStartMonth.AddMonths(1);
-                    }
+                //中間
+                var allStartMonth = new DateTime(startDate.Year, startDate.Month, 1).AddMonths(1);
+                var allEndMonth = new DateTime(endDate.Year, endDate.Month, 1);
+                while (allEndMonth > allStartMonth)
+                {
+                    searchMonth = allStartMonth.ToString("yyyyMM");
+                    if (budgets.Any(x => x.YearMonth == searchMonth))
+                        totalAmount += budgets.FirstOrDefault(x => x.YearMonth == searchMonth).Amount;
 
-                    return totalAmount;
+                    allStartMonth = allStartMonth.AddMonths(1);
+                }
+
+                return totalAmount;
             }
         }
     }
