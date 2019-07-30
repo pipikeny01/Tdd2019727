@@ -20,3 +20,14 @@ C:\Users\joeychen\Source\Repos\weihaochiou\BudgetApp\BudgetApp\obj\Debug\BudgetA
 C:\Users\joeychen\Source\Repos\weihaochiou\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csproj.CopyComplete
 C:\Users\joeychen\Source\Repos\weihaochiou\BudgetApp\BudgetApp\obj\Debug\BudgetApp.exe
 C:\Users\joeychen\Source\Repos\weihaochiou\BudgetApp\BudgetApp\obj\Debug\BudgetApp.pdb
+D:\Users\kenny\Source\Repos\201907tdd\tdd20190727\BudgetApp\BudgetApp\bin\Debug\BudgetApp.exe.config
+D:\Users\kenny\Source\Repos\201907tdd\tdd20190727\BudgetApp\BudgetApp\bin\Debug\BudgetApp.exe
+D:\Users\kenny\Source\Repos\201907tdd\tdd20190727\BudgetApp\BudgetApp\bin\Debug\BudgetApp.pdb
+D:\Users\kenny\Source\Repos\201907tdd\tdd20190727\BudgetApp\BudgetApp\bin\Debug\NSubstitute.dll
+D:\Users\kenny\Source\Repos\201907tdd\tdd20190727\BudgetApp\BudgetApp\bin\Debug\NSubstituteAutoMocker.dll
+D:\Users\kenny\Source\Repos\201907tdd\tdd20190727\BudgetApp\BudgetApp\bin\Debug\NSubstitute.xml
+D:\Users\kenny\Source\Repos\201907tdd\tdd20190727\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csprojAssemblyReference.cache
+D:\Users\kenny\Source\Repos\201907tdd\tdd20190727\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csproj.CoreCompileInputs.cache
+D:\Users\kenny\Source\Repos\201907tdd\tdd20190727\BudgetApp\BudgetApp\obj\Debug\BudgetApp.csproj.CopyComplete
+D:\Users\kenny\Source\Repos\201907tdd\tdd20190727\BudgetApp\BudgetApp\obj\Debug\BudgetApp.exe
+D:\Users\kenny\Source\Repos\201907tdd\tdd20190727\BudgetApp\BudgetApp\obj\Debug\BudgetApp.pdb
