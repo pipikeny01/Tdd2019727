@@ -24,7 +24,7 @@ namespace BudgetApp
             //同年月
             if (startDate.ToString("yyyyMM") == endDate.ToString("yyyyMM"))
             {
-                return QeurySingleMonth(startDate, endDate, budgets);
+                return QuerySingleMonth(startDate, endDate, budgets);
             }
             else
             {
@@ -66,7 +66,7 @@ namespace BudgetApp
             }
         }
 
-        private static decimal QeurySingleMonth(DateTime startDate, DateTime endDate, List<Budget> budgets)
+        private static decimal QuerySingleMonth(DateTime startDate, DateTime endDate, List<Budget> budgets)
         {
             string searchMonth = startDate.ToString("yyyyMM");
 
@@ -75,22 +75,11 @@ namespace BudgetApp
                 return 0;
             }
 
-            //一整個月
             var budget = budgets.FirstOrDefault(x => x.YearMonth == searchMonth);
-            if (endDate.Day == DateTime.DaysInMonth(startDate.Year, startDate.Month) && startDate.Day == 1)
-            {
-                return budget.Amount;
-            }
-            else if (startDate.Day == endDate.Day) //同一天
-            {
-                return budget.Amount /
-                       DateTime.DaysInMonth(startDate.Year, startDate.Month);
-            }
-            else
-            {
-                return budget.Amount /
-                       DateTime.DaysInMonth(startDate.Year, startDate.Month) * (endDate.Day - startDate.Day + 1);
-            }
+
+            return budget.Amount /
+                   DateTime.DaysInMonth(startDate.Year, startDate.Month) * (endDate.Day - startDate.Day + 1);
+
         }
     }
 }
